@@ -16,7 +16,10 @@ const router = createBrowserRouter(
         <Route path='about' element={<About/>}/>
         <Route path='contact' element={<Contact/>}/>
     </Route>
-  )
+  ),
+  {
+    basename: '/harsh-portfolio-website'
+  }
 )
 
 createRoot(document.getElementById('root')).render(
