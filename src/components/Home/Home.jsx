@@ -6,8 +6,59 @@ import comp from "./image/comp.png";
 import brush from "./image/brush.png";
 import diamond from "./image/diamond.png";
 import stars from "./image/stars.png";
+import Carousel from "../About/carousel";
+import { useState, useRef, useEffect } from "react";
 
 function Home() {
+  const ref = useRef(null);
+  const midref = useRef(null)
+  const [isleftVisible, setisleftVisible] = useState(false);
+  const [isrightVisible, setisrightVisible] = useState(false);
+  const [ismidVisible, setismidVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setisleftVisible(true);
+          setisrightVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setismidVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (midref.current) {
+      observer.observe(midref.current);
+    }
+    return () => {
+      if (midref.current) {
+      observer.unobserve(midref.current);
+    }
+    };
+  }, []);
+
   return (
     <>
       <div className="home">
@@ -35,7 +86,7 @@ function Home() {
           </div>
         </div>
         <div className="home-section1">
-          <aside className="side-section">
+          <aside ref={ref} className={`side-section ${isleftVisible ? "leftshow" : ""}`}>
             <div className="line-dots">
               <div className="home-line1"></div>
               <div className="home-dot1"></div>
@@ -64,7 +115,7 @@ function Home() {
               </div>
             </div>
           </aside>
-          <div className="right-side">
+          <div ref={ref} className={`right-side ${isrightVisible ? "rightshow" : ""}`}>
             <div className="right-side-heading">
               <div className="right-side-heading1">BETTER DESIGN,</div>
               <div className="right-side-heading1">BETTER EXPERIENCE</div>
@@ -76,9 +127,11 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="home-section2">
+        <div ref={midref} className={`home-section2 ${ismidVisible ? "homeshow" : ""}`}>
           <div className="sec2-head">
-            <div className="sec2-head-img"><img src={stars} alt="stars" /></div>
+            <div className="sec2-head-img">
+              <img src={stars} alt="stars" />
+            </div>
             <div className="sec2-head-text">WHAT I BRING</div>
           </div>
           <div className="sec2-box">
@@ -123,6 +176,12 @@ function Home() {
               </ul>
             </div>
           </div>
+        </div>
+        <div className="project-section">
+          <div className="project-section-title">
+            <p>Projects</p>
+          </div>
+          <Carousel />
         </div>
       </div>
     </>

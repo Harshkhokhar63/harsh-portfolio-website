@@ -1,5 +1,6 @@
 import React from "react";
 import "./About.css";
+import { useState, useRef, useEffect } from "react";
 import img from "./image/harsh.png";
 import html from "./image/html.png";
 import css from "./image/css.png";
@@ -10,6 +11,53 @@ import figma from "./image/figma.png";
 import Carousel from "./carousel.jsx";
 
 function About() {
+  const ref = useRef(null);
+  const midref = useRef(null)
+  const [isVisible, setisVisible] = useState(false);
+  const [ismidVisible, setismidVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setisVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setismidVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (midref.current) {
+      observer.observe(midref.current);
+    }
+    return () => {
+      if (midref.current) {
+      observer.unobserve(midref.current);
+    }
+    };
+  }, []);
+
   return (
     <>
       <div className="about-page">
@@ -21,7 +69,7 @@ function About() {
               <span className="about-top-hi">Hi, </span>
               <span className="about-top-name">i'm Harsh</span>, a passionate
               and curious developer /designer eager to create digital
-              experiences that are both functional and visually appealing.{" "}
+              experiences that are both functional and visually appealing.
               <br />
               <br />
               When I'm not coding or designing, you can find me exploring design
@@ -29,7 +77,7 @@ function About() {
             </div>
           </div>
         </div>
-                <div className="about-mid-section">
+        <div ref={midref} className={`about-mid-section ${ismidVisible ? "midshow" : ""}`}>
           <div className="mid-section-heading">
             <p>
               Stay <span>Connected</span> with me
@@ -44,24 +92,45 @@ function About() {
           </div>
           <div className="follow-icons">
             <ul>
-              <li>
+              {/* <li>
                 <div className="follow-icons-img">
                   <a href="https://www.google.com" target="_blank"><img src="https://icon-library.com/images/facebook-icon-black-and-white-vector/facebook-icon-black-and-white-vector-2.jpg" alt="" /></a>
                 </div>
-              </li>
+              </li> */}
               <li>
                 <div className="follow-icons-img">
-                  <a href="https://www.google.com" target="_blank"><img className="twitter-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnTaYsTGr99BpkNdMcDrUJOV0oFh6Un9zOcQ&s" alt="" /></a>
+                  <a href="https://x.com/HarshKhokh48317" target="_blank">
+                    <img
+                      className="twitter-logo"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnTaYsTGr99BpkNdMcDrUJOV0oFh6Un9zOcQ&s"
+                      alt=""
+                    />
+                  </a>
                 </div>
               </li>
               <li>
                 <div className="follow-icons-img">
-                  <a href="https://www.google.com" target="_blank"><img className="github-logo"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb-ImDt1u4PQE9yvtImFO8Gttkzm8fVypBeQ&s" alt="" /></a>
+                  <a href="https://github.com/Harshkhokhar63" target="_blank">
+                    <img
+                      className="github-logo"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb-ImDt1u4PQE9yvtImFO8Gttkzm8fVypBeQ&s"
+                      alt=""
+                    />
+                  </a>
                 </div>
               </li>
               <li>
                 <div className="follow-icons-img">
-                  <a href="https://www.google.com" target="_blank"><img className="linkedin-logo"  src="https://www.svgrepo.com/show/107799/linkedin.svg" alt="" /></a>
+                  <a
+                    href="https://www.linkedin.com/in/harsh-khokhar-60445436a"
+                    target="_blank"
+                  >
+                    <img
+                      className="linkedin-logo"
+                      src="https://www.svgrepo.com/show/107799/linkedin.svg"
+                      alt=""
+                    />
+                  </a>
                 </div>
               </li>
             </ul>
@@ -69,7 +138,10 @@ function About() {
         </div>
         <div className="about-skills">
           <div className="skills-text">SKILLS</div>
-          <div className="skills-sections">
+          <div
+            ref={ref}
+            className={`skills-sections ${isVisible ? "show" : ""}`}
+          >
             <div className="skills-data">
               <div className="skills-heading">Language</div>
               <div className="skills-info">
@@ -120,8 +192,10 @@ function About() {
           </div>
         </div>
         <div className="project-section">
-            <div className="project-section-title"><p>Projects</p></div>
-            <Carousel/>
+          <div className="project-section-title">
+            <p>Projects</p>
+          </div>
+          <Carousel />
         </div>
       </div>
     </>

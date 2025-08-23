@@ -41,6 +41,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.2s linear;
+}
+.hire-me:hover{
+    box-shadow: 2px 2px 4px gray;
+    scale: 1.03;
 }
 .text{
     font-size: 32px;

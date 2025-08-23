@@ -22,42 +22,42 @@
 }
 .footer-wrapper {
   display: flex;
-  column-gap: 50px;
+  column-gap: 75px;
   position: absolute;
   right: 70px;
-  top: 200px;
-}
-.footer-head {
-  font-size: 24px;
-  font-family: "Konkhmer Sleokchher", system-ui;
-  margin-bottom: 13px;
+  top: 180px;
 }
 .footer-li {
   display: flex;
-  flex-direction: column;
-  row-gap: 25px;
+  column-gap: 75px;
 }
 .footer-li li {
   font-family: KoHo;
-  font-size: 18px;
+  font-size: 20px;
+}
+.footer-li li:hover{
+  text-decoration: underline;
+  color: lightgray;
 }
 .line {
-  width: 100%;
-  border: 1.5px solid white;
-  position: absolute;
-  bottom: 90px;
+  width: 90%;
+  border: 1px solid rgb(139, 139, 139);
+  position: relative;
+  top: 245px;
+  margin: auto;
 }
 .rights {
   position: absolute;
-  bottom: 25px;
+  bottom: 110px;
   font-family: 20px;
-  left: 30px;
+  left: 70px;
+  color: rgb(177, 177, 177);
   font-family: Konkhmer Sleokchher;
 }
 .footer-logos {
   position: absolute;
-  bottom: 25px;
-  right: 40px;
+  bottom: 110px;
+  right: 100px;
   display: flex;
   column-gap: 40px;
   align-items: center;

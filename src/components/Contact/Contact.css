@@ -1,0 +1,18 @@
+.left-contact{
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+.left-contact.show{
+    opacity: 1;
+    transform: translateX(0px);
+}
+.right-contact{
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+.right-contact.show{
+    opacity: 1;
+    transform: translateX(0px);
+}

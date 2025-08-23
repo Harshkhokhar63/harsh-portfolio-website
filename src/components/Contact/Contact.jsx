@@ -1,12 +1,39 @@
 import React from 'react'
+import './Contact.css'
+import { useState, useRef, useEffect } from "react";
 
 export default function Contact() {
+      const ref = useRef(null)
+      const [isleftVisible, setisleftVisible] = useState(false);
+      const [isrightVisible, setisrightVisible] = useState(false);
+    
+      useEffect(() => {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setisleftVisible(true);
+              setisrightVisible(true);
+              observer.unobserve(entry.target);
+            }
+          },
+          { threshold: 0.1 }
+        );
+    
+        if (ref.current) {
+          observer.observe(ref.current);
+        }
+        return () => {
+          if (ref.current) {
+            observer.unobserve(ref.current);
+          }
+        };
+      }, []);
     return (
         <div className="relative flex items-top justify-center min-h-[700px] bg-white sm:items-center sm:pt-0">
             <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div className="mt-8 overflow-hidden">
                     <div className="grid grid-cols-1 md:grid-cols-2">
-                        <div className="p-6 mr-2 bg-gray-100 sm:rounded-lg">
+                        <div ref={ref} className={`left-contact p-6 mr-2 bg-gray-100 sm:rounded-lg ${isleftVisible ? "show" : ""}`}>
                             <h1 className="text-3xl sm:text-4xl text-gray-800 font-extrabold tracking-tight">
                                 Get in touch: 
                             </h1>
@@ -87,7 +114,7 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        <form className="p-6 flex flex-col justify-center">
+                        <form ref={ref} className={`right-contact p-6 flex flex-col justify-center ${isrightVisible ? "show" : ""}`} action="https://formspree.io/f/mkgzyayw" method="post">
                             <div className="flex flex-col">
                                 <label htmlFor="name" className="hidden">
                                     Full Name
@@ -97,6 +124,7 @@ export default function Contact() {
                                     name="name"
                                     id="name"
                                     placeholder="Full Name"
+                                    required
                                     className="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-purple-500 focus:outline-none"
                                 />
                             </div>
@@ -110,6 +138,7 @@ export default function Contact() {
                                     name="email"
                                     id="email"
                                     placeholder="Email"
+                                    required
                                     className="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-purple-500 focus:outline-none"
                                 />
                             </div>

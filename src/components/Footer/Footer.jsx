@@ -13,14 +13,13 @@ function Footer() {
         <img className="backgr" src={Backgr} alt="" />
         <div className="footer-logo">
           <Link to="/">
-            <div>Harsh</div>
+            <div></div>
           </Link>
         </div>
 
         <div className="footer-wrapper">
 
           <div className="res">
-            <h1 className="footer-head">RESOURCES</h1>
             <ul className="footer-li">
               <li>
                 <NavLink to="/About">
@@ -36,43 +35,23 @@ function Footer() {
           </div>
 
           <div className="res">
-            <h1 className="footer-head">FOLLOW US</h1>
             <ul className="footer-li">
               <li>
-                <NavLink to="/About">
-                  LinkedIn
-                </NavLink>
+                <a href="https://www.linkedin.com/in/harsh-khokhar-60445436a" target="_blank">LinkedIn</a>
               </li>
               <li>
-                <NavLink to="/Contact">
-                  Github
-                </NavLink>
+                <a href="https://github.com/Harshkhokhar63" target="_blank">Github</a>
               </li>
             </ul>
           </div>
 
-          <div className="res">
-            <h1 className="footer-head">LEGAL</h1>
-            <ul className="footer-li">
-              <li>
-                <NavLink to="/About">
-                  Privacy Policy
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/Contact">
-                  Terms & Conditions
-                </NavLink>
-              </li>
-            </ul>
-          </div>
         </div>
         <hr className="line"/>
         <div className="rights">© 2025harshkhokhar. All Rights Reserved.</div>
         <div className="footer-logos">
-          <div className="footer-logo-bottom"><img src={facebook} alt="" /></div>
-          <div className="footer-logo-bottom"><img src={twitter} alt="" /></div>
-          <div className="footer-logo-bottom"><img src={github} alt="" /></div>
+          {/* <div className="footer-logo-bottom"><a href="" target="_blank"><img src={facebook} alt="" /></a></div> */}
+          <div className="footer-logo-bottom"><a href="https://x.com/HarshKhokh48317" target="_blank"><img src={twitter} alt="" /></a></div>
+          <div className="footer-logo-bottom"><a href="https://github.com/Harshkhokhar63" target="_blank"><img src={github} alt="" /></a></div>
         </div>
       </footer>
     </>

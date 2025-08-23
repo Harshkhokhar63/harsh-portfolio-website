@@ -1,61 +1,62 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './Carousel.css';
+import React, { useRef } from "react";
+import './Carousel.css'
+import img1 from './image/card1.png'
 
-const Carousel = () => {
-  const cards = ['1', '2', '3', '4', '5', '6'];
-  const visibleCount = 3;
-  const cardWidth = 310;
 
-  const [startIndex, setStartIndex] = useState(0);
-  const [translateX, setTranslateX] = useState(0);
+export default function Carousel() {
+  const scrollRef = useRef(null);
 
-  const handleNext = () => {
-    if (startIndex + visibleCount < cards.length) {
-      setStartIndex(prev => prev + 1);
-    }
+  // Function to scroll
+  const scroll = (direction, step) => {
+    let scrollAmount = 0;
+    if (step === "small") scrollAmount = 310; // ~1 card
+
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
   };
-
-  const handlePrev = () => {
-    if (startIndex > 0) {
-      setStartIndex(prev => prev - 1);
-    }
-  };
-
-  useEffect(() => {
-    setTranslateX(-startIndex * cardWidth);
-  }, [startIndex]);
 
   return (
-    <div className="carousel-container">
-      <button className="nav left" onClick={handlePrev} disabled={startIndex === 0}>
-        &#10094;
-      </button>
+    <div className="relative w-full max-w-5xl mx-auto">
+      
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-15 bg-gradient-to-r from-white to-transparent z-10" />
+      
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-15 bg-gradient-to-l from-white to-transparent z-10" />
 
-      <div className="carousel-window">
-        <div
-          className="carousel-track"
-          style={{
-            transform: `translateX(${translateX}px)`,
-          }}
+      <div className="carousel-wrapper absolute left-2 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-2">
+        
+        <button
+          onClick={() => scroll("left", "small")}
+          className="scroll-btn btn-left"
         >
-          <div className="card"><a href=""><img className='project' src="https://karolo.com/wp-content/uploads/2025/02/nisien-thumbnail.jpg" alt="" /></a></div>
-          <div className="card"><a href=""><img className='project' src="https://intersmart.ae/wp-content/uploads/2024/10/What-is-web-designing.webp" alt="" /></a></div>
-          <div className="card"><a href=""><img className='project' src="https://cdn.sanity.io/images/r115idoc/production/c34eb6bb72db15ac433719d21f0b712fb88a24e1-768x492.png?w=1920&q=75&fit=clip&auto=format" alt="" /></a></div>
-          <div className="card"><a href=""><img className='project' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdUAkegq5EoZHtaTc3XzwinQU09D3k622N-w&s" alt="" /></a></div>
-          <div className="card"><a href=""><img className='project' src="https://cdn.mos.cms.futurecdn.net/xCSAEp8DjjrT2UQB87AoFN.jpg" alt="" /></a></div>
-          <div className="card"><a href=""><img className='project' src="https://assets.justinmind.com/wp-content/uploads/2021/09/web-design-brain-station-bootcamp.png" alt="" /></a></div>
-        </div>
+          <img src="https://static.thenounproject.com/png/2963798-200.png" alt="" />
+        </button>
       </div>
 
-      <button
-        className="nav right"
-        onClick={handleNext}
-        disabled={startIndex + visibleCount >= cards.length}
+      <div className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-2">
+        
+        <button
+          onClick={() => scroll("right", "small")}
+          className="scroll-btn btn-right"
+        >
+          <img src="https://static.thenounproject.com/png/swipe-right-icon-2963799-512.png" alt="" />
+        </button>
+      </div>
+
+      <div
+        ref={scrollRef}
+        className="carousel-container flex gap-4 scroll-smooth no-scrollbar px-6"
       >
-        &#10095;
-      </button>
+        <div className="cards">
+          <div className="card1 card"><a href="https://harshkhokhar63.github.io/Portfolio-Demo-Website/" target="_blank"><img src={img1} alt="" /></a></div>
+          <div className="card2 card"><a href=""><img src="" alt="" /></a></div>
+          <div className="card3 card"><a href=""><img src="" alt="" /></a></div>
+          <div className="card4 card"><a href=""><img src="" alt="" /></a></div>
+          <div className="card5 card"><a href=""><img src="" alt="" /></a></div>
+          <div className="card6 card"><a href=""><img src="" alt="" /></a></div>
+        </div>
+      </div>
     </div>
   );
-};
-
-export default Carousel;
+}

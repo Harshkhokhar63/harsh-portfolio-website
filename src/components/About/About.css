@@ -7,10 +7,11 @@
     position: relative;
 }
 .about-top-section img{
-    width: 400px;
+    width: 370px;
     position: absolute;
-    bottom: 0px;
-    left: 130px;
+    bottom: 80px;
+    border-radius: 10px;
+    left: 170px;
 }
 .about-top-data{
     position: absolute;
@@ -65,10 +66,17 @@
 .skills-sections{
     display: flex;
     column-gap: 150px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 .skills-data{
     width: max-content;
     font-family: quicksand;
+}
+.skills-sections.show{
+    opacity: 1;
+    transform: translateY(0px);
 }
 .skills-heading{
     font-size: 40px;
@@ -94,6 +102,13 @@
 .about-mid-section{
     width: max-content;
     margin: 200px 200px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.about-mid-section.midshow{
+    opacity: 1;
+    transform: translateY(0px);
 }
 .mid-section-heading p{
     font-family: Impact;
@@ -141,7 +156,6 @@
 .project-section-title{
     width: 150px;
     height: 50px;
-    background: linear-gradient(135deg, #6b0f8f80, #6b0f8f, #7821DA);
     border-radius: 10px;
     margin: auto;
     display: flex;
@@ -151,8 +165,9 @@
 }
 .project-section-title p{
     font-family: quicksand;
-    color: white;
-    font-size: 20px;
+    color: black;
+    font-size: 40px;
+    font-weight: 900;
 }
 .project-section{
     margin: 200px auto;
