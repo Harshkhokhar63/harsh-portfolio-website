@@ -1,6 +1,6 @@
 .card {
   min-width: 322px;
-  height: 220px;
+  height: 200px;
   margin: 0 5px;
   background-color: #808080;
   display: flex;
@@ -26,6 +26,12 @@
 }
 .carousel-container{
   overflow: hidden;
+  width: 100%;
+}
+.top-container-carousel{
+  width: 80%;
+  min-width: 600px;
+  margin: auto;
 }
 .carousel-wrapper{
   height: auto;

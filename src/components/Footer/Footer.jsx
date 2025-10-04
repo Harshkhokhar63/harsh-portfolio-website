@@ -13,7 +13,7 @@ function Footer() {
         <img className="backgr" src={Backgr} alt="" />
         <div className="footer-logo">
           <Link to="/">
-            <div></div>
+            <div>HARSH</div>
           </Link>
         </div>
 
@@ -34,7 +34,7 @@ function Footer() {
             </ul>
           </div>
 
-          <div className="res">
+          {/* <div className="res">
             <ul className="footer-li">
               <li>
                 <a href="https://www.linkedin.com/in/harsh-khokhar-60445436a" target="_blank">LinkedIn</a>
@@ -43,13 +43,13 @@ function Footer() {
                 <a href="https://github.com/Harshkhokhar63" target="_blank">Github</a>
               </li>
             </ul>
-          </div>
+          </div> */}
 
         </div>
         <hr className="line"/>
-        <div className="rights">© 2025harshkhokhar. All Rights Reserved.</div>
+        <div className="rights">Find me on...</div>
         <div className="footer-logos">
-          {/* <div className="footer-logo-bottom"><a href="" target="_blank"><img src={facebook} alt="" /></a></div> */}
+          <div className="footer-logo-bottom"><a href="https://www.linkedin.com/in/harsh-khokhar-60445436a" target="_blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeUrcbjiHvpnYXs-wgsUVqRF63fzSiqn7ZMA&s" alt="linkedin" /></a></div>
           <div className="footer-logo-bottom"><a href="https://x.com/HarshKhokh48317" target="_blank"><img src={twitter} alt="" /></a></div>
           <div className="footer-logo-bottom"><a href="https://github.com/Harshkhokhar63" target="_blank"><img src={github} alt="" /></a></div>
         </div>
