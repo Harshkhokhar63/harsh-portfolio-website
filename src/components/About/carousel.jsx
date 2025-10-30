@@ -3,6 +3,8 @@ import './Carousel.css'
 import img1 from './image/card1.png'
 import img2 from './image/group39.png'
 import img3 from './image/pizza.png'
+import img4 from './image/img4.png'
+
 
 
 export default function Carousel() {
@@ -50,11 +52,11 @@ export default function Carousel() {
         className="carousel-container flex gap-4 scroll-smooth no-scrollbar px-6"
         >
         <div className="cards">
-          <div className="card1 card"><a href="https://harshkhokhar63.github.io/Portfolio-Demo-Website/" target="_blank"><img src={img1} alt="" /></a></div>
+          <div className="card4 card"><a href="https://dribbble.com/shots/26711140-HealthCare-Web-design?utm_source=Clipboard_Shot&utm_campaign=harsh-khokhar&utm_content=HealthCare%20Web%20design&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=harsh-khokhar&utm_content=HealthCare%20Web%20design&utm_medium=Social_Share" target="_blank"><img src={img4} alt="" /></a></div>
           <div className="card2 card"><a href="https://dribbble.com/shots/26582339-Portfolio-website-design?utm_source=Clipboard_Shot&utm_campaign=harsh-khokhar&utm_content=Portfolio%20website%20design&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=harsh-khokhar&utm_content=Portfolio%20website%20design&utm_medium=Social_Share" target="_blank"><img src={img2} alt="" /></a></div>
           <div className="card3 card"><a href="https://dribbble.com/shots/26456932-Pizza-promo-banner?utm_source=Clipboard_Shot&utm_campaign=harsh-khokhar&utm_content=Pizza%20promo%20banner.&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=harsh-khokhar&utm_content=Pizza%20promo%20banner.&utm_medium=Social_Share" target="_blank"><img src={img3} alt="" /></a></div>
-          {/* <div className="card4 card"><a href="" target="_blank"><img src="" alt="" /></a></div>
-          <div className="card5 card"><a href="" target="_blank"><img src="" alt="" /></a></div>
+          <div className="card1 card"><a href="https://harshkhokhar63.github.io/Portfolio-Demo-Website/" target="_blank"><img src={img1} alt="" /></a></div>
+          {/* <div className="card5 card"><a href="" target="_blank"><img src="" alt="" /></a></div>
           <div className="card6 card"><a href="" target="_blank"><img src="" alt="" /></a></div> */}
         </div>
       </div>
